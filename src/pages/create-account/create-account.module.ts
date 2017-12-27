@@ -1,13 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { AppMaterialModule } from '../../app/app.material.module';
 
 import { CreateAccountPage } from "./create-account";
 import { CreateAccountRoutingModule } from "./create-account.routing";
+import { CreateAccountComponent } from "../../components/create-account/create-account.component";
 
 @NgModule({
-    declarations: [ CreateAccountPage ],
-    imports: [ BrowserModule, FormsModule, CreateAccountRoutingModule]
+    declarations: [ 
+        CreateAccountPage,
+        CreateAccountComponent
+    ],
+    imports: [ 
+        BrowserModule,
+        FormsModule,
+        CreateAccountRoutingModule,
+        AppMaterialModule 
+    ],
+    exports: [ CreateAccountComponent ],
+    providers: [ ]
 })
 
 export class CreateAccountModule {}

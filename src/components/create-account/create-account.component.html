@@ -1,0 +1,42 @@
+<div id="create-account-component" class="">
+    <div class="text-center">
+        <h1 class="text-uppercase"><small>{{ viewTitle }}</small></h1>
+    </div>
+    <form (ngSubmit)="onSubmit()" #createAccount class="text-center">
+        <div class="form-group">
+            <mat-form-field>
+                    <input matInput type="text" class="form-control" id="firstName" required [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="First Name">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                    <input matInput type="text" class="form-control" id="lastName" required [(ngModel)]="model.lastName" name="lastName" #lastName="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="Last Name">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                    <input matInput type="text" class="form-control" id="companyName" required [(ngModel)]="model.companyName" name="companyName" #companyName="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="Company Name">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field hintLabel="johndoe@example.com">
+                <input matInput type="email" class="form-control" id="email" required [(ngModel)]="model.email" name="email" #email="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="Email">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field hintLabel="Min 6 characters">
+                <input matInput type="password" class="form-control" id="password" required minLength="6" [(ngModel)]="model.password" name="password" #password="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="Password">
+                <mat-hint align="end">{{ password.value?.length || 0 }}</mat-hint>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button type="submit" class="btn btn-primary">
+            <span class="fa fa-create"></span> Create
+        </button>
+    </form>
+    <br>
+    <div class="text-center">
+        <p>
+            <a routerLink="/login">Already have an account?</a>
+        </p>
+    </div>
+</div>

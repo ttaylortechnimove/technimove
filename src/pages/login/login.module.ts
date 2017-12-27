@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 
 import { LoginPage } from './login';
 import {LoginComponent } from '../../components/login/login.component';
@@ -10,7 +10,7 @@ import { AuthProvider } from '../../providers/auth/auth.provider';
     declarations: [ LoginPage, LoginComponent ],
     imports: [ 
         LoginRoutingModule,
-        FormsModule
+        // FormsModule
     ],
     exports: [ LoginComponent ],
     providers: [ AuthProvider ]

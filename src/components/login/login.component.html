@@ -1,29 +1,32 @@
 <div id="login-component" class="">
-    hello world
-    <button mat-button>Button</button>
-    <button>Click</button>
-    <mat-toolbar>
-        <mat-toolbar-row>
-            <span>Login</span>
-        </mat-toolbar-row>
-    </mat-toolbar>
-    <!--<form (ngSubmit)="onSubmit()" #login>
+    <div class="text-center">
+        <h1 class="text-uppercase"><small>{{ viewTitle }}</small></h1>
+    </div>
+    <form (ngSubmit)="onSubmit()" #login class="text-center">
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" required [(ngModel)]="model.email" name="email" #email="ngModel" [ngModelOptions]="{ updateOn: 'change' }">
-            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-                Email is required
-            </div>
+            <mat-form-field>
+                <input matInput type="email" class="form-control" id="email" required [(ngModel)]="model.email" name="email" #email="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="Email">
+            </mat-form-field>
         </div>
         <div class="form-group">
-            <label for="password">Email:</label>
-            <input type="password" class="form-control" id="password" required [(ngModel)]="model.password" name="password" #password="ngModel" [ngModelOptions]="{ updateOn: 'change' }">
-            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-                Password is required
-            </div>
+            <mat-form-field>
+                <input matInput type="password" class="form-control" id="password" required [(ngModel)]="model.password" name="password" #password="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="Password">
+            </mat-form-field>
         </div>
-        <button type="submit" class="btn btn-success">
-            Submit
+        <!--<div>
+            <mat-checkbox checked="checked">Remember</mat-checkbox>
+        </div>-->
+        <button mat-raised-button type="submit" class="btn btn-primary">
+                <span class="fa fa-sign-in"></span> Login
         </button>
-    </form>-->
+    </form>
+    <br>
+    <div class="text-center">
+        <p>
+            <a routerLink="/forgot-password">Forgot password?</a>
+        </p>
+        <p>
+            <a routerLink="/create-account">Don't have an account?</a>
+        </p>
+    </div>
 </div>
