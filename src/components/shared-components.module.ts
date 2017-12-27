@@ -4,12 +4,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [ NavBarComponent, LoginComponent ],
+  declarations: [ 
+    NavBarComponent,
+
+  ],
   imports: [ CommonModule, FormsModule ],
-  exports: [ NavBarComponent, LoginComponent ],
+  exports: [ 
+    NavBarComponent,
+
+  ],
   providers:[ NavBarProvider ]
 })
 

@@ -7,27 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class LoginPage implements OnInit {
-    viewTitle: string = "Login";
-    email:string;
-    password:string;
-    user = {
-        email:'',
-        password:''
-    }
-    
-    
-    constructor() {
-        // End of Constructor
+
+    constructor(){
+
     }
 
     ngOnInit(){
 
     }
 
-    login(){
-
-        console.log( this.email + ', ' + this.password )
-    }
-
-    // End of Class
 }
