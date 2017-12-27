@@ -13,7 +13,12 @@ import { FilterDatePipe } from './../../pipes/filter-date/filter-date.pipe';
 })
 
 export class TimesheetFormComponent implements OnInit {
-    user: string = 'user';
+    user = {
+        start:'',
+        finish:'',
+        break:'',
+        overnight:''
+    }
     @Input() start: Date;
     @Input() end: Date;
     break: any;
