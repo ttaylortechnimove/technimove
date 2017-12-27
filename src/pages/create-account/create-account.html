@@ -1,0 +1,51 @@
+<div class="row-fluid" id="create-account-page">
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1 class="text-uppercase"><small>{{ viewTitle }}</small></h1>
+        </div>
+        <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4">
+            <form class="form" (ngSubmit)="createAccount()">
+                <div>
+                    <label class="label" for="firstName">First Name:</label>
+                    <input class="form-control" type="text" name="firstName" placeholder="Enter your first name">
+                </div>
+                <div>
+                    <label class="label" for="lastName">Last Name:</label>
+                    <input class="form-control" type="text" name="lastName" placeholder="Enter your last name">
+                </div>
+                <div>
+                    <label class="label" for="user">Company:</label>
+                    <input class="form-control" type="text" name="company" placeholder="Enter your company name">
+                </div>
+                <div>
+                    <label class="label" for="email">Email:</label>
+                    <input class="form-control" type="text" name="email" placeholder="Enter your email address">
+                </div>
+                <div>
+                    <label class="label" for="confirmEmail">Confirm Email:</label>
+                    <input class="form-control" type="text" name="confirmEmail" placeholder="Confirm your email address">
+                </div>
+                <div>
+                    <label class="label" for="password">Password:</label>
+                    <input class="form-control" type="password" name="password" placeholder="Enter your password">
+                </div>
+                <div>
+                    <label class="label" for="confirmPassword">Password:</label>
+                    <input class="form-control" type="password" name="confirmPassword" placeholder="Confirm your password">
+                </div>
+                <br>
+                <div>
+                    <button type="submit" class="btn btn-success btn-block">
+                        Create
+                    </button>
+                </div>
+                <br>
+                <div class="text-center">
+                    <p>
+                        Already have an account? <a routerLink="/login">Log in</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.5.
 
+npm i -S @angular/animations @angular/common @angular/compiler @angular/core @angular/forms @angular/http @angular/platform-browser @angular/platform-browser-dynamic @angular/router animate.css body-parser bootstrap compression connect connect-flash connect-mongo connect-multiparty cookie-parser core-js crypto ejs express express-session font-awesome font-awesome-animation fs-extra jquery jquery-ui method-override mongodb morgan mysql nodemailer passport passport-facebook passport-google-oauth passport-local passport-twitter path rxjs serve-favicon socket.io zone.js
+
+npm i -D @angular/cli @angular/compiler-cli @angular/language-service @types/jasmine @types/jasminewd2 @types/node codelyzer jasmine-core jasmine-spec-reporter karma karma-chrome-launcher karma-cli karma-coverage-istanbul-reporter karma-jasmine karma-jasmine-html-reporter protractor ts-node tslint typescript
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

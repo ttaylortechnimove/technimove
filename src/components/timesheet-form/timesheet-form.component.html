@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4">
+        <form (ngSubmit)="onStart()" #timesheetForm>
+            <div class="form-group">
+                <label for="start"><h4 class="page-header">{{ timesheetStart | filterDate }}</h4></label>
+                <input 
+                    type="datetime-local" 
+                    class="form-control" 
+                    id="start" 
+                    name="start" 
+                    #start="ngModel"
+                    [(ngModel)]="timesheetStart" 
+                    [ngModelOptions]="{updateOn: 'change'}" 
+                    required format="dd/mm/YYYY HH:mm">
+            </div>
+            <div [hidden]="start.valid || start.pristine" class="alert alert-danger">
+                Start date and time is required
+            </div>
+            <div class="">
+                <!--<button type="button" class="btn btn-secondary" (click)="selectAll()" disabled muted>Select All</button>-->
+                <button type="submit" class="btn btn-primary">Start</button>
+                <!--<button type="button" class="btn btn-secondary" (click)="endAll()" disabled>End All</button>-->
+                <!--<button type="button" class="btn btn-secondary">End</button>-->
+            </div>
+        </form> 
+        <!--<div *ngIf="start">
+            <h3>Hello {{ user }}, you worked on {{ timesheetStart }}</h3>
+        </div>-->
+        <div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let time of timesheets; let i = index">
+                        <td><input type="checkbox"></td>
+                        <td>{{ time.shift | filterDate }}</td>
+                        <td>{{ time.wage }}</td>
+                        <td><button type="button" (click)="endShift(i)" name="endShift" class="btn btn-danger btn-xs">End</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div>
+</div>

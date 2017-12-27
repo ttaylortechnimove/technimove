@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+body{
+    background-image: '/assets/imgs/default.jpg';
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; 
+}
