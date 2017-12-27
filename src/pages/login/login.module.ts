@@ -16,4 +16,4 @@ import { AuthProvider } from '../../providers/auth/auth.provider';
     providers: [ AuthProvider ]
 })
 
-export class LoginModule {}
+export class LoginModule { }
