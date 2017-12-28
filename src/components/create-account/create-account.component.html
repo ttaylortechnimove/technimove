@@ -1,24 +1,48 @@
 <div id="create-account-component" class="">
     
     <div class="text-center">
-        <h1 class="text-uppercase"><small>{{ viewTitle }}</small></h1>
-        <!--<mat-toolbar>
-            <span class="text-uppercase">{{ viewTitle }}</span>
-            <span class="example-spacer"></span>
-        </mat-toolbar>-->
+        <h1 class="text-uppercase">
+            <small>{{ viewTitle }}</small>
+        </h1>
     </div>
-    <form (ngSubmit)="onSubmit()" #createAccount name="create-account" class="text-center" novalidate>
+    <form
+        [formGroup]="rForm"
+        novalidate 
+        class="form-group text-center"
+        name="create-account" 
+        #createAccount 
+        (ngSubmit)="onSubmit(rForm.value)">
         <div class="form-group">
             <mat-form-field>
-                <input matInput type="text" class="form-control" id="firstName" required [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="First Name" required>
-                <mat-error *ngIf="model.firstName.$dirty || model.firstName.$pristine">
-                    First name is required
+                <input 
+                    required 
+                    matInput 
+                    type="text" 
+                    formControlName="firstName" 
+                    class="form-control" 
+                    id="firstName" 
+                    placeholder="First Name" 
+                    name="firstName" 
+                    [(ngModel)]="model.firstName">
+                <mat-error>
+                    <div *ngIf="!rForm.controls['firstName'].valid && rForm.controls['firstName'].touched">
+                        This is required
+                    </div>
                 </mat-error>
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field>
-                <input matInput type="text" class="form-control" id="lastName" required [(ngModel)]="model.lastName" name="lastName" #lastName="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="Last Name" required>
+                <input
+                    required  
+                    matInput 
+                    type="text" 
+                    formControlName="lastName" 
+                    class="form-control" 
+                    id="lastName" 
+                    placeholder="Last Name"
+                    name="lastName" 
+                    [(ngModel)]="model.lastName">
                 <mat-error>
                     Last name is required
                 </mat-error>
@@ -26,7 +50,16 @@
         </div>
         <div class="form-group">
             <mat-form-field>
-                <input matInput type="text" class="form-control" id="companyName" required [(ngModel)]="model.companyName" name="companyName" #companyName="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="Company Name" required>
+                <input
+                    required  
+                    matInput 
+                    type="text" 
+                    formControlName="companyName" 
+                    class="form-control" 
+                    id="companyName" 
+                    placeholder="Company Name"
+                    name="companyName" 
+                    [(ngModel)]="model.companyName">
                 <mat-error>
                     Company name is required
                 </mat-error>
@@ -34,7 +67,16 @@
         </div>
         <div class="form-group">
             <mat-form-field hintLabel="johndoe@example.com">
-                <input matInput type="email" class="form-control" id="email" required [(ngModel)]="model.email" name="email" #email="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="Email">
+                <input
+                    required  
+                    matInput 
+                    type="email" 
+                    formControlName="email" 
+                    class="form-control" 
+                    id="email" 
+                    placeholder="Email"
+                    name="email" 
+                    [(ngModel)]="model.email">
                 <mat-error>
                     Email is required
                 </mat-error>
@@ -42,7 +84,119 @@
         </div>
         <div class="form-group">
             <mat-form-field hintLabel="Min 6 characters">
-                <input matInput type="password" class="form-control" id="password" required minLength="6" [(ngModel)]="model.password" name="password" #password="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="Password">
+                <input
+                    required 
+                    minLength="6" 
+                    matInput 
+                    type="password" 
+                    formControlName="password" 
+                    class="form-control" 
+                    id="password" 
+                    placeholder="Password"
+                    name="password" 
+                    [(ngModel)]="model.password">
+                <!--<mat-hint align="end">{{ mode.password.value?.length || 0 }}</mat-hint>-->
+                <mat-error>
+                    Password is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">
+            <span class="fa fa-create"></span> Create
+        </button>
+    </form>
+    <!--<form
+        novalidate 
+        class="form-group text-center"
+        name="create-account" 
+        #createAccount 
+        (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <mat-form-field>
+                <input 
+                    required 
+                    matInput 
+                    type="text" 
+                    class="form-control" 
+                    id="firstName" 
+                    placeholder="First Name" 
+                    name="firstName" 
+                    #firstName="ngModel" 
+                    [(ngModel)]="model.firstName" 
+                    [ngModelOptions]="{ updateOn: 'change' }">
+                <mat-error>
+                    <div *ngIf="firstName.touched || !firstName.valid">First name is required</div>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <input
+                    required  
+                    matInput 
+                    type="text" 
+                    class="form-control" 
+                    id="lastName" 
+                    placeholder="Last Name"
+                    name="lastName" 
+                    #lastName="ngModel" 
+                    [(ngModel)]="model.lastName" 
+                    [ngModelOptions]="{ updateOn: 'change' }">
+                <mat-error>
+                    Last name is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <input
+                    required  
+                    matInput 
+                    type="text" 
+                    class="form-control" 
+                    id="companyName" 
+                    placeholder="Company Name"
+                    name="companyName" 
+                    #companyName="ngModel" 
+                    [(ngModel)]="model.companyName" 
+                    [ngModelOptions]="{ updateOn: 'change' }">
+                <mat-error>
+                    Company name is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field hintLabel="johndoe@example.com">
+                <input
+                    required  
+                    matInput 
+                    type="email" 
+                    class="form-control" 
+                    id="email" 
+                    placeholder="Email"
+                    name="email" 
+                    #email="ngModel" 
+                    [(ngModel)]="model.email" 
+                    [ngModelOptions]="{ updateOn: 'change' }">
+                <mat-error>
+                    Email is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field hintLabel="Min 6 characters">
+                <input
+                    required 
+                    minLength="6" 
+                    matInput 
+                    type="password" 
+                    class="form-control" 
+                    id="password" 
+                    placeholder="Password"
+                    name="password" 
+                    #password="ngModel" 
+                    [(ngModel)]="model.password" 
+                    [ngModelOptions]="{ updateOn: 'change' }">
                 <mat-hint align="end">{{ password.value?.length || 0 }}</mat-hint>
                 <mat-error>
                     Password is required
@@ -52,8 +206,11 @@
         <button mat-raised-button type="submit" class="btn btn-primary">
             <span class="fa fa-create"></span> Create
         </button>
-    </form>
+    </form>-->
     <br>
+    <div *ngIf="rForm.value.firstName && rForm.value.lastName && rForm.value.email">
+        <h3>Hello {{ rForm.value.firstName }} {{ rForm.value.lastName }}, please check {{ rForm.value.email }} for activation code.</h3>
+    </div>
     <div class="text-center">
         <p>
             <a routerLink="/login">Already have an account?</a>

@@ -1,6 +1,47 @@
-<div class="container-fluid">
-    <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4">
-        <form (ngSubmit)="onStart()" #timesheetForm>
+<div>
+    <form 
+    [formGroup]="rForm" 
+    novalidate 
+    class="form-group text-center"
+    name="timesheet-start" 
+    #timesheetStart 
+    (ngSubmit)="onSubmit(rForm.value)">
+        <div class="form-group">
+            <mat-form-field hintLabel="">
+                <input 
+                    required
+                    matInput
+                    class="form-control"
+                    formControlName="startDate"
+                    name="start_date" 
+                    placeholder="Select start date"
+                    [matDatepicker]="startPicker" 
+                    format="dd/mm/YYYY HH:mm">
+                <mat-datepicker #startPicker></mat-datepicker>
+                <mat-datepicker-toggle [for]="startPicker" matSuffix></mat-datepicker-toggle>
+                <mat-error></mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field hintLabel="">
+                <input 
+                    required 
+                    matInput 
+                    type="time" 
+                    formControlName="startTime" 
+                    placeholder="Select a time" 
+                    name="start_time">
+            </mat-form-field>
+        </div>
+        <button mat-raised-button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">
+            <span class="fa fa-create"></span> Submit
+        </button>
+    </form>
+</div>
+
+<!--<div class="container-fluid">
+    <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4">-->
+        <!--<form (ngSubmit)="onStart()" #timesheetForm>
             <div class="form-group">
                 <label for="start"><h4 class="page-header">{{ timesheetStart | filterDate }}</h4></label>
                 <input 
@@ -17,16 +58,11 @@
                 Start date and time is required
             </div>
             <div class="">
-                <!--<button type="button" class="btn btn-secondary" (click)="selectAll()" disabled muted>Select All</button>-->
                 <button type="submit" class="btn btn-primary">Start</button>
-                <!--<button type="button" class="btn btn-secondary" (click)="endAll()" disabled>End All</button>-->
-                <!--<button type="button" class="btn btn-secondary">End</button>-->
             </div>
-        </form> 
-        <!--<div *ngIf="start">
-            <h3>Hello {{ user }}, you worked on {{ timesheetStart }}</h3>
-        </div>-->
-        <div>
+        </form>-->
+
+        <!--<div>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -45,9 +81,9 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
-</div>
+        </div>-->
+    <!--</div>
+</div>-->
 <!--<div>
     <mat-form-field>
             <input 

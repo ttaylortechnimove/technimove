@@ -1,12 +1,9 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { FormsModule, FormControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
+import { AppMaterialModule } from '../../app/app.material.module';
 import { TimesheetPage } from './timesheet';
 import { NewTimesheetPage } from '../new-timesheet/new-timesheet';
 import { TimesheetRouterComponent } from './timesheet.router.component';
@@ -21,11 +18,9 @@ import { FilterDatePipe } from './../../pipes/filter-date/filter-date.pipe';
     imports: [ 
         BrowserModule,
         BrowserAnimationsModule,
-        MatCheckboxModule,
-        MatDatepickerModule,
-        MatFormFieldModule,
-        MatToolbarModule,
+        AppMaterialModule,
         FormsModule,
+        ReactiveFormsModule,
         TimesheetRoutingModule,
         TimesheetRouterComponent,
         SharedComponentsModule 

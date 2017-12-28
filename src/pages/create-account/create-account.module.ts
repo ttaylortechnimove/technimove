@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppMaterialModule } from '../../app/app.material.module';
 
 import { CreateAccountPage } from "./create-account";
@@ -15,6 +15,7 @@ import { CreateAccountComponent } from "../../components/create-account/create-a
     imports: [ 
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         CreateAccountRoutingModule,
         AppMaterialModule 
     ],

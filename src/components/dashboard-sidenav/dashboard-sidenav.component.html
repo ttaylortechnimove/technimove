@@ -1,0 +1,9 @@
+<mat-sidenav #sidenav class="text-center">
+    <span routerLink="/dashboard">{{ viewTitle }}</span>
+    <div *ngFor="let mtr of sideNav">
+        <mat-toolbar-row routerLink="/{{mtr.path}}">{{ mtr.name }}</mat-toolbar-row>
+    </div>
+</mat-sidenav>
+<button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+</button>

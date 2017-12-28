@@ -1,25 +1,13 @@
-{{ viewTitle }}
-<div class="row-fluid">
-    <div class="container-fluid">
-        <div id="dash-1" class="">
-            <h1>Timesheets</h1>
-            <ul>
-                <li>Active(live)</li>
-                <li>Submitted</li>
-            </ul>
-        </div>
-        <div id="dash-2" class="">
-            <h1>Payroll</h1>
-            <ul>
-                <li>option 1</li>
-            </ul>
-        </div>
-        <div id="dash-3" class="">
-            <h1>Tools</h1>
-            <ul>
-                <li>Employee register - (Add new employees)</li>
-            </ul>
-        </div>
-    </div>
-</div>
+<dashboard-menu></dashboard-menu>
+
 <a routerLink="/">Home</a>
+<a routerLink="/timesheet">Timesheet</a>
+
+<!--<mat-form-field>
+    <input matInput value="Christmas party!" placeholder="Message" #message>
+</mat-form-field>  
+<mat-form-field>
+    <input matInput value="Drink" placeholder="Action" #action>
+</mat-form-field>
+<button mat-button (click)="openSnackBar(message.value, action.value)">Show snack-bar</button>
+-->  
