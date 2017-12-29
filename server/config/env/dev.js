@@ -3,9 +3,18 @@ const password = '';
 const host = '127.0.0.1';
 const mongodbPort = '27017/';
 const mysqlPort = '3306/';
-const database = 'technimove-dev';
+const database = 'development';
 
 module.exports = {
+    open:( dbType, db ) => {
+        if(dbType === 'mysql'){
+            return host + ':' + mysqlPort
+        }
+        if(dbType === 'mongodb'){
+            return 'mongodb://' + username + password + host + ':' + mongodbPort + db
+        }
+        return false;
+    },
     db:{
         mysql: host + ':' + mysqlPort,
         mongodb: 'mongodb://' + username + password + host + ':' + mongodbPort + database

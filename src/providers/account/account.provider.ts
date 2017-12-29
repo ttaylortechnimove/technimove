@@ -7,11 +7,21 @@ import 'rxjs/add/operator/map';
 export class AccountProvider {
     constructor( private http: Http) {}
     create( usercreds ) {
-        var headers = new Headers();
-        var creds = 'firstName' + usercreds.firstName + 'lastName' + usercreds.lastName + 'companyName ' + usercreds.companyName + 'email=' + usercreds.email + '&password=' + usercreds.password;
-        headers.append( 'Content-Type', 'application/X-www-form=urlencoded' );
+        const url = 'http://localhost:8300/create-account';
+        let headers = new Headers();
+        var creds = 'firstName=' + usercreds.firstName + '&lastName=' + usercreds.lastName + '&companyName=' + usercreds.companyName + '&email=' + usercreds.email + '&password=' + usercreds.password;
+        /*let creds = { 
+            fisrtName: usercreds.firstName,
+            lastName: usercreds.lastName,
+            companyName: usercreds.companyName,
+            email: usercreds.email,
+            password: usercreds.password
+        };*/
+        headers.append( "Content-Type", "application/x-www-form-urlencoded" );
         return new Promise( ( resolve ) => {
-            this.http.post( 'http://127.0.0.1:8300/create-account', creds, { headers: headers } ).subscribe( ( data ) => {
+            //this.http.post( 'http://127.0.0.1:8300/create-account', creds, { headers: headers } ).subscribe( ( data ) => {
+                this.http.post(url, creds, { headers: headers } ).subscribe( ( data ) => {
+
                 console.log( data );    
             /*if( data.json().success ){
                     window.localStorage.setItem( 'auth_key', data.json().token );

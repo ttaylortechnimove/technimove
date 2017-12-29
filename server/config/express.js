@@ -26,7 +26,7 @@ const originsWhitelist = [
 }*/
 
 const corsOptions = {
-  allowHeaders: [ "Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token" ],
+  allowHeaders: [ "Cache-Control", "Pragma", "Origin",  "Authorization", "Content-Type", "X-Requested-With", "Accept", "X-Access-Token" ],
   credentials: true,
   methods: "GET, HEAD, OPTIONS, PUT, PATCH, POST, DELETE",
   origin: originsWhitelist,

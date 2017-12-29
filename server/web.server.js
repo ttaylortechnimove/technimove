@@ -11,4 +11,4 @@ module.exports = () => {
 
     return app;
 };
-console.log('WEB Server started @: http://127.0.0.1:' + port + '/' );
+console.log('WEB Server started @: http://127.0.0.1:${port}/' );

@@ -1,5 +1,5 @@
 const PROXY_CONFIG = {
-    "/*": {
+    /*"/*": {
         "target": "*",
         "secure": false,
         "bypass": ( req, res, proxyOptions ) => {
@@ -15,7 +15,7 @@ const PROXY_CONFIG = {
         "changeOrigin": true,
         "logLevel": "debug"
 
-    }
+    }*/
 }
 
 module.exports = PROXY_CONFIG;
