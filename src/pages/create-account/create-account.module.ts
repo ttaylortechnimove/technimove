@@ -6,6 +6,7 @@ import { AppMaterialModule } from '../../app/app.material.module';
 import { CreateAccountPage } from "./create-account";
 import { CreateAccountRoutingModule } from "./create-account.routing";
 import { CreateAccountComponent } from "../../components/create-account/create-account.component";
+import { AccountProvider } from "../../providers/account/account.provider";
 
 @NgModule({
     declarations: [ 
@@ -20,7 +21,7 @@ import { CreateAccountComponent } from "../../components/create-account/create-a
         AppMaterialModule 
     ],
     exports: [ CreateAccountComponent ],
-    providers: [ ]
+    providers: [ AccountProvider ]
 })
 
 export class CreateAccountModule {}

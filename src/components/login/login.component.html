@@ -2,22 +2,41 @@
     <div class="text-center">
         <h1 class="text-uppercase"><small>{{ viewTitle }}</small></h1>
     </div>
-    <form (ngSubmit)="onSubmit()" #login class="text-center">
+    <form 
+        novalidate 
+        class="form-group text-center" 
+        name="login-form" 
+        #loginForm 
+        (ngSubmit)="onSubmit(rForm.value)" 
+        [formGroup]="rForm">
         <div class="form-group">
-            <mat-form-field>
-                <input matInput type="email" class="form-control" id="email" required [(ngModel)]="model.email" name="email" #email="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="Email">
+            <mat-form-field hintLabel="">
+                <input
+                    required 
+                    matInput 
+                    type="email" 
+                    class="form-control" 
+                    id="email" 
+                    name="email"
+                    formControlName="email" 
+                    placeholder="Enter your email address">
             </mat-form-field>
         </div>
         <div class="form-group">
             <mat-form-field>
-                <input matInput type="password" class="form-control" id="password" required [(ngModel)]="model.password" name="password" #password="ngModel" [ngModelOptions]="{ updateOn: 'change' }" placeholder="Password">
+                <input 
+                    required 
+                    matInput 
+                    type="password" 
+                    class="form-control" 
+                    id="password" 
+                    name="password" 
+                    formControlName="password" 
+                    placeholder="Enter your password">
             </mat-form-field>
         </div>
-        <!--<div>
-            <mat-checkbox checked="checked">Remember</mat-checkbox>
-        </div>-->
-        <button mat-raised-button type="submit" class="btn btn-primary">
-                <span class="fa fa-sign-in"></span> Login
+        <button mat-raised-button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">
+            <span class="fa fa-sign-in"></span> Login
         </button>
     </form>
     <br>

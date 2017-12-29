@@ -1,10 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+
 import { FormGroup, FormControl, FormBuilder, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-
 
 @Component({
     selector: 'login-component',
@@ -20,6 +17,7 @@ export class LoginComponent implements OnInit {
         email: "",
         password: ""
     }
+    rForm: FormGroup;
 
     constructor( public fb: FormBuilder ){
         this.options = fb.group({
@@ -29,10 +27,31 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(){
-        
+        this.rForm = new FormGroup({
+            email: new FormControl( '', {
+                validators: Validators.compose(
+                    [
+                        Validators.required,
+                        Validators.email
+                    ]
+                ),
+                updateOn: 'change'
+            }),
+            password: new FormControl( '', {
+                validators: Validators.compose(
+                    [
+                        Validators.required
+                    ]
+                ),
+                updateOn: 'blur'
+            })
+        })
     }
 
-    onSubmit(){
-        
+    onSubmit( data ){
+        console.log( data );
+        if(data.email == 'a@gmail.com' && data.password == 'abc123'){
+
+        }
     }
 }

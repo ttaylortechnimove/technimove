@@ -31,5 +31,7 @@ export class AuthProvider {
         }) // End of return
 
     } // End of LogInByEmail()
-    
+    createAccount( ) {
+        
+    }
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -36,6 +36,7 @@ const routes: Routes = [
   imports:[
     AppMaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       routes,
       { preloadingStrategy: PreloadAllModules }

@@ -2,6 +2,7 @@ const bodyParser = require( 'body-parser' );
 const compress = require( 'compression' );
 const config = require( './config' );
 const cookieParser = require( 'cookie-parser' );
+const cors = require( 'cors' );
 const express = require( 'express' );
 const favicon = require( 'serve-favicon' );
 const flash = require( 'connect-flash' );
@@ -12,6 +13,17 @@ const path = require( 'path' );
 const passport = require( 'passport' );
 const session = require( 'express-session' );
 const socketio = require( 'socket.io' );
+const originsWhitelist = [ 
+  'http://127.0.0.1:5000', // **NG SERVE
+  'http://127.0.0.1:8300' // **NODEMON [webServer]
+ ];
+const corsOptions = {
+  origin: ( origin, callback ) => {
+    var isWhitelisted = originsWhitelist.indexOf( origin ) !== -1;
+    callback( null, isWhitelisted );
+  },
+  credentials: true
+}
 
 module.exports = () => {
   const app = express();
@@ -31,6 +43,7 @@ module.exports = () => {
   app.use( bodyParser.json() );
   app.use( methodOverride() );
   app.use( cookieParser() );
+  app.use( cors( corsOptions ) );
 
   app.set( 'views', path.join( process.cwd(), 'dist' ) );
   app.engine( 'html', require( 'ejs' ).renderFile );

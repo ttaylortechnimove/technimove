@@ -6,12 +6,12 @@
         </h1>
     </div>
     <form
-        [formGroup]="rForm"
+        [formGroup]="form"
         novalidate 
         class="form-group text-center"
         name="create-account" 
         #createAccount 
-        (ngSubmit)="onSubmit(rForm.value)">
+        (ngSubmit)="onSubmit(form.value)">
         <div class="form-group">
             <mat-form-field>
                 <input 
@@ -23,9 +23,10 @@
                     id="firstName" 
                     placeholder="First Name" 
                     name="firstName" 
+                    value="Tony" 
                     [(ngModel)]="model.firstName">
                 <mat-error>
-                    <div *ngIf="!rForm.controls['firstName'].valid && rForm.controls['firstName'].touched">
+                    <div *ngIf="!form.controls['firstName'].valid && form.controls['firstName'].touched">
                         This is required
                     </div>
                 </mat-error>
@@ -42,9 +43,12 @@
                     id="lastName" 
                     placeholder="Last Name"
                     name="lastName" 
+                    value="Taylor" 
                     [(ngModel)]="model.lastName">
                 <mat-error>
-                    Last name is required
+                    <div *ngIf="!form.controls['lastName'].valid && form.controls['lastName'].touched">
+                        Last name is required
+                    </div>
                 </mat-error>
             </mat-form-field>
         </div>
@@ -59,6 +63,7 @@
                     id="companyName" 
                     placeholder="Company Name"
                     name="companyName" 
+                    value="Technimove" 
                     [(ngModel)]="model.companyName">
                 <mat-error>
                     Company name is required
@@ -76,9 +81,15 @@
                     id="email" 
                     placeholder="Email"
                     name="email" 
+                    value="tony.tyrone.taylor@gmail.com" 
                     [(ngModel)]="model.email">
                 <mat-error>
-                    Email is required
+                    <div *ngIf="!form.controls['email'].valid && form.controls['email'].touched">
+                        Email is required
+                    </div>
+                    <!--<div *ngIf="form.controls['email'].hasError['email'] && form.controls['email'].touched">
+                        Enter a valid email address
+                    </div>-->
                 </mat-error>
             </mat-form-field>
         </div>
@@ -101,7 +112,7 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <button mat-raised-button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">
+        <button mat-raised-button type="submit" class="btn btn-primary" [disabled]="!form.valid">
             <span class="fa fa-create"></span> Create
         </button>
     </form>
@@ -208,8 +219,8 @@
         </button>
     </form>-->
     <br>
-    <div *ngIf="rForm.value.firstName && rForm.value.lastName && rForm.value.email">
-        <h3>Hello {{ rForm.value.firstName }} {{ rForm.value.lastName }}, please check {{ rForm.value.email }} for activation code.</h3>
+    <div *ngIf="form.value.firstName && form.value.lastName && form.value.email">
+        <h3>Hello {{ form.value.firstName }} {{ form.value.lastName }}, please check {{ form.value.email }} for activation link.</h3>
     </div>
     <div class="text-center">
         <p>

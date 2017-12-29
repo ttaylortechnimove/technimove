@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -34,6 +34,7 @@
     "connect-multiparty": "^2.1.0",
     "cookie-parser": "^1.4.3",
     "core-js": "^2.5.2",
+    "cors": "^2.8.4",
     "crypto": "^1.0.1",
     "ejs": "^2.5.7",
     "express": "^4.16.2",

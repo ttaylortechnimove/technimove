@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
-import { MatInputModule } from '@angular/material/input';
 import { FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+import { CreateAccount } from '../../models/create-account/create-account.model';
+import { AccountProvider } from '../../providers/account/account.provider';
 
 @Component({
     selector: 'create-account-component',
@@ -12,8 +13,8 @@ import { FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class CreateAccountComponent implements OnInit {
 
     viewTitle:string = "Create Account";
-    rForm: FormGroup;
-    users:any = [];
+    form: FormGroup;
+    cA: CreateAccount;
     model = {
         firstName:'',
         lastName:'',
@@ -21,31 +22,15 @@ export class CreateAccountComponent implements OnInit {
         email:'',
         password:''
     }
-    constructor( private fb: FormBuilder ){
-        /*this.rForm = fb.group({
-            'firstName': [ null, Validators.required],
-            'lastName': [ null, Validators.required],
-            'companyName': [ null, Validators.required],
-            'email': [ null, Validators.required],
-            'password': [ 
-                null, 
-                Validators.compose( 
-                    [ 
-                        Validators.required, 
-                        Validators.minLength(6), 
-                        Validators.maxLength(20) 
-                    ] 
-                )
-            ],
-            'termsAndConditions' : ''
-        });*/
+    constructor( private fb: FormBuilder, public account: AccountProvider ){
+       
     }
 
     ngOnInit(){
         /*this.rForm.get('validate').valueChanges.subscribe(
 
         )*/
-        this.rForm = new FormGroup({
+        this.form = new FormGroup({
             firstName: new FormControl('',{
                 validators: Validators.required,
                 updateOn: 'change'
@@ -59,7 +44,10 @@ export class CreateAccountComponent implements OnInit {
                 updateOn: 'change'
             }),
             email: new FormControl('',{
-                validators: Validators.required,
+                validators: [
+                        Validators.required,
+                        Validators.email
+                    ],
                 updateOn: 'change'
             }),
             password: new FormControl('',{
@@ -75,17 +63,7 @@ export class CreateAccountComponent implements OnInit {
         })
     }
 
-    onSubmit(){
-        
-        let user = {
-            firstName: this.model.firstName,
-            lastName: this.model.lastName,
-            companyName: this.model.companyName,
-            email: this.model.email,
-            password: this.model.password
-        }
-        this.users.push(user);
-        //console.log(data);
-        console.log(this.users)
+    onSubmit( form ){
+        this.account.create( form );
     }
 }
