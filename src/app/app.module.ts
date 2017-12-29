@@ -32,7 +32,7 @@ import { AppCustomModule } from './app.custom.module';
     AppRoutingModule
   ],
   providers: [ 
-    { provide: BrowserXhr, useClass: CustomExtensionBrowserXHRProvider }
+    //{ provide: BrowserXhr, useClass: CustomExtensionBrowserXHRProvider }
    ],
   bootstrap: [ AppComponent ]
 })

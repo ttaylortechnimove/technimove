@@ -5,6 +5,6 @@ exports.angularRouter = ( req, res, next ) => {
 };
 
 exports.createAccount = ( req, res ) => {
-    console.log( req );
+    console.log( "POST: " + req.body );
     res.send('Hello from create account');
 }

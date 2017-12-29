@@ -6,7 +6,7 @@ module.exports = ( app ) => {
     // console.log(db)
     // app.route('/').all( web.angularRouter );
     // app.route('/about').get( web.angularRouter );
-    app.route('*').get( web.angularRouter );
+    //app.route('*').get( web.angularRouter );
     app.route('/create-account').post( web.createAccount );
     // app.route('/login').get( web.angularRouter );
     //app.route('/timesheet').get( web.angularRouter );

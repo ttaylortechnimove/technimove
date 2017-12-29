@@ -17,16 +17,32 @@ const originsWhitelist = [
   'http://127.0.0.1:5000', // **NG SERVE
   'http://127.0.0.1:8300' // **NODEMON [webServer]
  ];
-const corsOptions = {
+/*const corsOptions = {
   origin: ( origin, callback ) => {
     var isWhitelisted = originsWhitelist.indexOf( origin ) !== -1;
     callback( null, isWhitelisted );
   },
   credentials: true
-}
+}*/
+
+const corsOptions = {
+  allowHeaders: [ "Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token" ],
+  credentials: true,
+  methods: "GET, HEAD, OPTIONS, PUT, PATCH, POST, DELETE",
+  origin: originsWhitelist,
+  preflightContinue: false
+};
 
 module.exports = () => {
   const app = express();
+  app.use( ( req, res, next ) => {
+    res.header( "Access-Control-Allow-Credentials", "true");
+    res.header( "Access-Control-Allow-Origin", "*");
+    res.header( "Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin,  Authorization, Content-Type, X-Requested-With, Accept" );
+    res.header( "Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS" );
+    next()
+  });
+
   const server = http.createServer( app );
   const io = socketio.listen( server );
 
@@ -44,6 +60,7 @@ module.exports = () => {
   app.use( methodOverride() );
   app.use( cookieParser() );
   app.use( cors( corsOptions ) );
+  app.options( "*", cors( corsOptions ) );
 
   app.set( 'views', path.join( process.cwd(), 'dist' ) );
   app.engine( 'html', require( 'ejs' ).renderFile );

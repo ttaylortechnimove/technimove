@@ -1,6 +1,6 @@
 const PROXY_CONFIG = {
     "/*": {
-        "target": "http://localhost:8300/*",
+        "target": "*",
         "secure": false,
         "bypass": ( req, res, proxyOptions ) => {
             if( req.headers.accept.indexOf( 'html' ) !== -1 ){
