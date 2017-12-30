@@ -1,13 +1,16 @@
 const web = require( '../controllers/web.server.controller.js' );
-const mongoose = require('../../config/mongoose');
+const passport = require('passport');
 
 module.exports = ( app ) => {
-    const db = mongoose();
-    // console.log(db)
     app.route('/').all( web.angularRouter );
-    // app.route('/about').get( web.angularRouter );
+    
     //app.route('*').get( web.angularRouter );
-    app.route('/create-account').post( web.createAccount );
+    app.route('/create-account').post( web.create );
+    app.route('/auth').post( passport.authenticate('local', {
+        successRedirect: 'http://127.0.0.7:5000/dashboard',
+        failureRedirect: '/',
+        failureFlash: true
+    }) );
     // app.route('/login').get( web.angularRouter );
     //app.route('/timesheet').get( web.angularRouter );
 };

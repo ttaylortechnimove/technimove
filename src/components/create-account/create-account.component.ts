@@ -27,7 +27,7 @@ export class CreateAccountComponent implements OnInit {
     }
 
     ngOnInit(){
-        /*this.rForm.get('validate').valueChanges.subscribe(
+        /*this.form.get('validate').valueChanges.subscribe(
 
         )*/
         this.form = new FormGroup({

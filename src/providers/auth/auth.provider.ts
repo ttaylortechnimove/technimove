@@ -1,26 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Router } from '@angular/router';
 
 @Injectable()
 
 export class AuthProvider {
     isLoggedIn: boolean;
     
-    constructor( private _http: Http ) {
+    constructor( private _http: Http, private router:Router ) {
 
     }
 
-    loginByEmail( usercreds ) {
+    login( usercreds ) {
         this.isLoggedIn = false;
         var headers = new Headers();
         var creds = 'email=' + usercreds.email + '&password=' + usercreds.password;
 
-        headers.append( 'Content-Type', 'application/X-www-form=urlencoded' );
+        headers.append( 'Content-Type', 'application/x-www-form=urlencoded' );
         return new Promise( ( resolve ) => {
         
-            this._http.post( 'http://127.0.0.1:8300/authenticate', creds, { headers: headers } ).subscribe( ( data ) => {
-                if( data.json().success ){
-                    window.localStorage.setItem( 'auth_key', data.json().token );
+            this._http.post( 'http://127.0.0.1:8300/auth', creds, { headers: headers } ).subscribe( ( data ) => {
+                if( data.json() ){
+                    window.localStorage.setItem( 'auth_key', data.json()._id );
                     this.isLoggedIn = true;
                 } // End of if
 
@@ -31,7 +32,7 @@ export class AuthProvider {
         }) // End of return
 
     } // End of LogInByEmail()
-    createAccount( ) {
-        
+    logout() {
+
     }
 }

@@ -3,6 +3,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
+import { AuthProvider } from '../../providers/auth/auth.provider';
+
 @Component({
     selector: 'login-component',
     templateUrl: './login.component.html',
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
     }
     rForm: FormGroup;
 
-    constructor( public fb: FormBuilder ){
+    constructor( public fb: FormBuilder, private auth: AuthProvider ){
         this.options = fb.group({
             hideRequired: false,
             floatLabel: 'auto'
@@ -48,10 +50,7 @@ export class LoginComponent implements OnInit {
         })
     }
 
-    onSubmit( data ){
-        console.log( data );
-        if(data.email == 'a@gmail.com' && data.password == 'abc123'){
-
-        }
+    onSubmit( form ){
+        this.auth.login( form )
     }
 }

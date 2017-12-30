@@ -61,10 +61,19 @@ module.exports = () => {
   app.use( cookieParser() );
   app.use( cors( corsOptions ) );
   app.options( "*", cors( corsOptions ) );
+  app.use(session({
+    saveUninitialized: true,
+    resave: true,
+    secret: config.sessionSecret
+  }) );
 
   app.set( 'views', path.join( process.cwd(), 'dist' ) );
   app.engine( 'html', require( 'ejs' ).renderFile );
   app.set( 'view engine', 'ejs' );
+
+  app.use( flash() );
+  app.use( passport.initialize() );
+  app.use( passport.session() );
 
   /* ROUTES */
   require( process.cwd() + '/server/app/routes/api.server.routes.js' )( app );
