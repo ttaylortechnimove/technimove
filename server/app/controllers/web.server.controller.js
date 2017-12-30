@@ -25,17 +25,21 @@ exports.angularRouter = ( req, res, next ) => {
     // next();
 };
 exports.create = ( req, res, next ) => {
-        let user = new UserAccount( req.body );      
-        user.save( ( err ) => {
-            if( err ){
-                console.log('error');
-                return next(err);
-            }else{
-                console.log('success');
-                res.json(user);
-            }
-        });  
+    let user = new UserAccount( req.body );      
+    user.save( ( err ) => {
+        if( err ){
+            return next(err);
+        }else{
+            res.json(user);
+        }
+    });  
 };
+exports.login = ( req, res, next ) => {
+    //let user = new UserAccount( req.body );
+    //user.find({})
+    console.log( req.body );
+    res.json( req.body );
+}
 exports.logout = ( req, res ) => {
     req.logout();
     res.redirect('/');

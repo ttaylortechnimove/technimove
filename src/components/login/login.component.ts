@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
         email: "",
         password: ""
     }
-    rForm: FormGroup;
+    form: FormGroup;
 
     constructor( public fb: FormBuilder, private auth: AuthProvider ){
         this.options = fb.group({
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(){
-        this.rForm = new FormGroup({
+        this.form = new FormGroup({
             email: new FormControl( '', {
                 validators: Validators.compose(
                     [

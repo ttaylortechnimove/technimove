@@ -1,10 +1,10 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const UserAccount = require('mongoose').model('UserAccount');
+const User = require('mongoose').model('UserAccount');
 
 module.exports = () => {
     passport.use( new LocalStrategy( ( email, password, done ) => {
-        UserAccount.findOne({
+        User.findOne({
             email: email
         }, ( err, user ) => {
             if( err ) {
@@ -18,9 +18,9 @@ module.exports = () => {
             if( !user.authenticate( password ) ){
                 return done( null, false, {
                     message: 'Invalid password'
-                })
+                });
             }
             return done( null, user )
-        })
-    }) );
-}
+        });
+    }));
+};

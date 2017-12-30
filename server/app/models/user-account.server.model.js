@@ -55,7 +55,7 @@ const UserAccountSchema = new Schema({
 });
 // UserAccountSchema.statics.findByName( ( name, callback ) => {} )
 
-/*UserAccountSchema.virtual('fullName')
+UserAccountSchema.virtual('fullName')
     .get( () => {
             return this.firstName + ' ' + this.lastName; 
         }
@@ -65,7 +65,7 @@ const UserAccountSchema = new Schema({
         this.firstName = splitName[0] || '';
         this.lastName = splitName[1] || '';
     }
-    );*/
+);
 
 UserAccountSchema.pre('save', ( next ) => {
     if ( this.password ) {
@@ -75,12 +75,20 @@ UserAccountSchema.pre('save', ( next ) => {
     next(); 
 });
 UserAccountSchema.methods.hashPassword = ( password ) => {
-    return crypto.pbkdf2Sync( password, this.salt, 10000, 64).toString( 'base64' );
+    return crypto.pbkdf2Sync( password, this.salt, 10000, 64 ).toString( 'base64' );
 };
 UserAccountSchema.methods.authenticate = ( password ) => {
-    return this.password === this.hashPassword( password );
+    return this.password ===  this.hashPassword( password );
 }
 
 UserAccountSchema.set( 'toJSON', {  getters: true,  virtuals: true });
+
+UserAccountSchema.post( 'save', ( next ) => {
+    if( this.isNew){
+        console.log("A new user was created.");
+    }else{
+        console.log("A user updated details.");
+    }
+} )
 
 mongoose.model( 'UserAccount', UserAccountSchema );

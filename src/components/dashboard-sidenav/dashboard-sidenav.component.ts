@@ -9,12 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardSidenavComponent implements OnInit {
     viewTitle:string = "Dashboard Menu";
     sideNav:any = [
-        { path: 'dashboard', name: 'Home' },
-        { path: 'timesheet', name: 'Timesheet' },
-        { path: 'new-user', name: 'Add User' }
-        /*{ path: 'jobsheet', name: 'Jobsheet' },
-        { path: 'expense', name: 'Expense' },
-        { path: 'audit', name: 'Audit' }*/
+        { path: 'dashboard', name: 'Home', icon: 'home' },
+        { path: 'documents', name: 'Documents', icon: '' },
+        { path: 'timesheet', name: 'Messages', icon: 'comments' },
+        { path: 'apps', name: 'Apps', icon: '' },
+        { path: 'users', name: 'Users', icon: 'users' },
+        { path: 'activity', name: 'Activity', icon: 'line-chart' },
+        { path: 'bin', name: 'Bin', icon: 'fa fa-trash' }
     ]
     constructor(){
 
