@@ -29,7 +29,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations:[ 
-    //HomePage,
+    // HomePage,
     LoginComponent, 
     LoginPage,
     NotFoundPage 

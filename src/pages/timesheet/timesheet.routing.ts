@@ -3,7 +3,6 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { TimesheetPage } from './timesheet';
-import { NewTimesheetPage } from '../new-timesheet/new-timesheet';
 
 const routes: Routes = [
     {
