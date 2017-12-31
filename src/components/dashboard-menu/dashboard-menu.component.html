@@ -3,7 +3,9 @@
         <dashboard-sidenav></dashboard-sidenav>
         <span>{{ viewTitle | uppercase }}</span>
         <span class="spacer"></span>
-        <button mat-icon-button [matMenuTriggerFor]="menu">
+        <button 
+            mat-icon-button 
+            [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">

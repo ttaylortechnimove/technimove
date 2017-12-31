@@ -1,23 +1,28 @@
 import { NgModule } from "@angular/core";
+/*
+* comments
+*/
 
 import { ForgotPasswordModule } from '../pages/forgot-password/forgot-password.module';
-import { CreateAccountModule } from '../pages/create-account/create-account.module';
+import { RegisterModule } from '../pages/register/register.module';
 import { DashboardModule } from '../pages/dashboard/dashboard.module';
 import { TimesheetModule } from '../pages/timesheet/timesheet.module';
 import { HomeModule } from '../pages/home/home.module';
-
+/*
+* comments
+*/
 
 @NgModule({
     imports: [
         ForgotPasswordModule,
-        CreateAccountModule,
+        RegisterModule,
         DashboardModule,
         HomeModule,
         TimesheetModule
     ],
     exports: [
         ForgotPasswordModule,
-        CreateAccountModule,
+        RegisterModule,
         DashboardModule,
         HomeModule,
         TimesheetModule,

@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 
 import { AppMaterialModule } from '../../app/app.material.module';
 import { TimesheetPage } from './timesheet';
-import { NewTimesheetPage } from '../new-timesheet/new-timesheet';
 import { TimesheetRouterComponent } from './timesheet.router.component';
 import { TimesheetRoutingModule } from './timesheet.routing';
 import { SharedComponentsModule } from '../../components/shared-components.module';
@@ -14,7 +13,11 @@ import { TimesheetProvider } from './../../providers/timesheet/timesheet.provide
 import { FilterDatePipe } from './../../pipes/filter-date/filter-date.pipe';
 
 @NgModule({
-    declarations:[ TimesheetPage, NewTimesheetPage, TimesheetFormComponent, FilterDatePipe ],
+    declarations:[ 
+        TimesheetPage, 
+        TimesheetFormComponent, 
+        FilterDatePipe
+    ],
     imports: [ 
         BrowserModule,
         BrowserAnimationsModule,
