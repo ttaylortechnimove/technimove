@@ -23,12 +23,12 @@ import { NotFoundPage } from '../pages/not-found/not-found';
 **/
 const routes: Routes = [
     {
-      path: 'login',
-      // loadChildren:'C:/workspace/www/dev/technimove/src/pages/home/home#HomePage'
-      component: LoginPage
+      path: '',
+      redirectTo: 'login',
+      pathMatch: 'full'
     },
     {
-      path: '',
+      path: 'login',
       // loadChildren:'C:/workspace/www/dev/technimove/src/pages/home/home#HomePage'
       component: LoginPage
     },

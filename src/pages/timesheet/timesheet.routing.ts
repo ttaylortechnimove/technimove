@@ -11,13 +11,11 @@ const routes: Routes = [
         component: TimesheetPage
         // loadChildren:'C:/workspace/www/dev/technimove/src/pages/timesheet/timesheet.module#Timesheet'
       }
-]
+];
 
 @NgModule({
     imports: [
-        RouterModule.forChild(
-            routes/*,  { preloadingStrategy: PreloadAllModules }*/
-        )
+        RouterModule.forChild( routes )
     ],
     exports: [ RouterModule ]
 })

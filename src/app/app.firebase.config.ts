@@ -1,8 +1,15 @@
+/**
+* @author: Tony Taylor
+* @authorUrl: http://github.com/tonytyronetaylor
+* @authorEmail: tony.tyrone.taylor@gmail.com
+* @license: G.N.U General Public License V3
+* @licenseUrl: https://www.gnu.org/licenses/gpl-3.0.en.html
+**/
 export const firebaseConfig = {
-    apiKey: "AIzaSyA1D04oR_1qe0EZdUu2uUs4uu5W_iykwsQ",
-    authDomain: "technimove-96752.firebaseapp.com",
-    databaseURL: "https://technimove-96752.firebaseio.com",
-    projectId: "technimove-96752",
-    storageBucket: "technimove-96752.appspot.com",
-    messagingSenderId: "668446454161"
+    apiKey: '',
+    authDomain: '',
+    databaseURL: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: ''
 };

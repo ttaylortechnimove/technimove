@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DashboardRoutingModule } from './dashboard.routing';
 import { DashboardPage } from './dashboard';
@@ -20,8 +16,7 @@ import { DashboardContentComponent } from '../../components/dashboard-content/da
         DashboardContentComponent
     ],
     imports: [
-        // BrowserModule, BrowserAnimationsModule, NoopAnimationsModule, FormsModule, ReactiveFormsModule,
-        // CommonModule,
+        CommonModule,
         DashboardRoutingModule,
         AppMaterialModule,
     ],
