@@ -11,10 +11,10 @@ const routes: Routes = [
 ]
 
 @NgModule({
-    declarations: [ 
+    declarations: [
        // LoginPage
      ],
-    imports: [ 
+    imports: [
         RouterModule.forChild( routes )
     ],
     exports: [ 

@@ -11,30 +11,30 @@ import { NotFoundPage } from '../pages/not-found/not-found';
 
 const routes: Routes = [
     {
-      path :'login',
-      //loadChildren:'../pages/home/home#HomePage'
+      path: 'login',
+      // loadChildren:'../pages/home/home#HomePage'
       component: LoginPage
     },
     {
-      path :'',
-      //loadChildren:'../pages/home/home#HomePage'
+      path: '',
+      // loadChildren:'../pages/home/home#HomePage'
       component: LoginPage
     },
     {
-      path :'**',
-      //loadChildren:'../pages/not-found/not-found#NotFoundPage'
+      path: '**',
+      // loadChildren:'../pages/not-found/not-found#NotFoundPage'
       component: NotFoundPage
     }
-]
+];
 
 @NgModule({
-  declarations:[ 
+  declarations: [
     // HomePage,
-    LoginComponent, 
+    LoginComponent,
     LoginPage,
-    NotFoundPage 
+    NotFoundPage
   ],
-  imports:[
+  imports: [
     AppMaterialModule,
     FormsModule,
     ReactiveFormsModule,
@@ -43,9 +43,9 @@ const routes: Routes = [
       { preloadingStrategy: PreloadAllModules }
     )
   ],
-  exports:[ 
+  exports: [
     RouterModule,
-    LoginComponent 
+    LoginComponent
   ],
   providers: [ AuthProvider ]
 })

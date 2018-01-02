@@ -1,100 +1,19 @@
 <div>
-    <form 
-    [formGroup]="rForm" 
-    novalidate 
-    class="form-group text-center"
-    name="timesheet-start" 
-    #timesheetStart 
-    (ngSubmit)="onSubmit(rForm.value)">
+    <form [formGroup]="form" novalidate class="form-group text-center" name="timesheet-start" #timesheetStart ngModel="timesheetStart" (ngSubmit)="onSubmit(form.value)">
         <div class="form-group">
             <mat-form-field hintLabel="">
-                <input 
-                    required
-                    matInput
-                    class="form-control"
-                    formControlName="startDate"
-                    name="start_date" 
-                    placeholder="Select start date"
-                    [matDatepicker]="startPicker" 
-                    format="dd/mm/YYYY HH:mm">
+                <input required matInput class="form-control" formControlName="startDate" name="start_date" placeholder="Select start date" [matDatepicker]="startPicker" format="dd/mm/YYYY HH:mm">
                 <mat-datepicker #startPicker></mat-datepicker>
                 <mat-datepicker-toggle [for]="startPicker" matSuffix></mat-datepicker-toggle>
-                <mat-error></mat-error>
             </mat-form-field>
         </div>
         <div class="form-group">
-            <mat-form-field hintLabel="">
-                <input 
-                    required 
-                    matInput 
-                    type="time" 
-                    formControlName="startTime" 
-                    placeholder="Select a time" 
-                    name="start_time">
+            <mat-form-field>
+                <input required matInput type="time" formControlName="startTime" placeholder="Select a time" name="start_time">
             </mat-form-field>
         </div>
-        <button mat-raised-button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">
+        <button mat-raised-button type="submit" class="btn btn-primary" [disabled]="!form.valid">
             <span class="fa fa-create"></span> Submit
         </button>
     </form>
 </div>
-
-<!--<div class="container-fluid">
-    <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4">-->
-        <!--<form (ngSubmit)="onStart()" #timesheetForm>
-            <div class="form-group">
-                <label for="start"><h4 class="page-header">{{ timesheetStart | filterDate }}</h4></label>
-                <input 
-                    type="datetime-local" 
-                    class="form-control" 
-                    id="start" 
-                    name="start" 
-                    #start="ngModel"
-                    [(ngModel)]="timesheetStart" 
-                    [ngModelOptions]="{updateOn: 'change'}" 
-                    required format="dd/mm/YYYY HH:mm">
-            </div>
-            <div [hidden]="start.valid || start.pristine" class="alert alert-danger">
-                Start date and time is required
-            </div>
-            <div class="">
-                <button type="submit" class="btn btn-primary">Start</button>
-            </div>
-        </form>-->
-
-        <!--<div>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let time of timesheets; let i = index">
-                        <td><input type="checkbox"></td>
-                        <td>{{ time.shift | filterDate }}</td>
-                        <td>{{ time.wage }}</td>
-                        <td><button type="button" (click)="endShift(i)" name="endShift" class="btn btn-danger btn-xs">End</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>-->
-    <!--</div>
-</div>-->
-<!--<div>
-    <mat-form-field>
-            <input 
-            type="datetime-local" 
-            class="form-control" 
-            id="userStart" 
-            name="userStart" 
-            #userStart="ngModel"
-            [(ngModel)]="user.start" 
-            [ngModelOptions]="{updateOn: 'change'}" 
-            required format="dd/mm/YYYY HH:mm"
-            placeholder="Date and time">
-    </mat-form-field>
-</div>-->

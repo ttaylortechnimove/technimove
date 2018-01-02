@@ -14,38 +14,38 @@ import { FilterDatePipe } from './../../pipes/filter-date/filter-date.pipe';
 })
 
 export class TimesheetFormComponent implements OnInit {
-    rForm: FormGroup;
+    form: FormGroup;
     model = {
         start: '',
         end: '',
         break: '',
         overnight: ''
     }
-    @Input() start: Date;
-    @Input() end: Date;
-    overnightOption:any = [ "please select", "personl expense", "company card" ]
+    // @Input() start: Date;
+    // @Input() end: Date;
+    // overnightOption: any = [ "please select", "personl expense", "company card" ]
             
-    timesheetStart:any;
+    timesheetStart: any;
     timesheets:any = [];
     
     constructor( public timesheetCtrl: TimesheetProvider ){
         
     }
     ngOnInit() {
-        this.rForm = new FormGroup({
+        this.form = new FormGroup({
             startDate: new FormControl( '', {
-                validators: Validators.compose( 
-                    [ 
-                        Validators.required 
-                    ] 
+                validators: Validators.compose(
+                    [
+                        Validators.required
+                    ]
                 ),
                 updateOn: 'change'
             } ),
             startTime: new FormControl( '', {
-                validators: Validators.compose( 
-                    [ 
-                        Validators.required 
-                    ] 
+                validators: Validators.compose(
+                    [
+                        Validators.required
+                    ]
                 ),
                 updateOn: 'change'
             } )
@@ -59,7 +59,7 @@ export class TimesheetFormComponent implements OnInit {
     }
     /* Proper code */
     
-    onSubmit(){
+    onSubmit( timesheet ) {
 
     }
     /* End of proper code */
