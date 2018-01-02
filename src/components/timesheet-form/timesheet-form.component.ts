@@ -2,7 +2,7 @@ import { Component, Input, Output, OnInit, ViewEncapsulation } from '@angular/co
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { Timesheet } from '../../models/timesheet/timesheet.model';
+import { ITimesheet } from '../../models/timesheet/timesheet.model';
 import { TimesheetProvider } from '../../providers/timesheet/timesheet.provider';
 import { FilterDatePipe } from './../../pipes/filter-date/filter-date.pipe';
 
@@ -20,16 +20,14 @@ export class TimesheetFormComponent implements OnInit {
         end: '',
         break: '',
         overnight: ''
-    }
+    };
     // @Input() start: Date;
     // @Input() end: Date;
     // overnightOption: any = [ "please select", "personl expense", "company card" ]
-            
     timesheetStart: any;
-    timesheets:any = [];
-    
-    constructor( public timesheetCtrl: TimesheetProvider ){
-        
+    timesheets: any = [];
+    constructor( public timesheetCtrl: TimesheetProvider ) {
+        //
     }
     ngOnInit() {
         this.form = new FormGroup({
@@ -49,8 +47,8 @@ export class TimesheetFormComponent implements OnInit {
                 ),
                 updateOn: 'change'
             } )
-        })
-        //this.timesheets = JSON.stringify(this.timesheetCtrl.getAll());
+        });
+        // this.timesheets = JSON.stringify(this.timesheetCtrl.getAll());
         // console.log(JSON.stringify(this.timesheets));
         this.timesheetStart = new Date().toISOString().slice( 0, 16);
         setInterval( () => {
@@ -58,7 +56,6 @@ export class TimesheetFormComponent implements OnInit {
         }, 60000 );
     }
     /* Proper code */
-    
     onSubmit( timesheet ) {
 
     }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NavBarProvider } from '../../providers/nav-bar/nav-bar.provider';
-import { Navigation } from '../../models/navigation/navigation.model';
+import { INavBar } from '../../models/navigation/navigation.model';
 
 @Component({
     selector: 'nav-bar',
@@ -10,16 +10,14 @@ import { Navigation } from '../../models/navigation/navigation.model';
 })
 
 export class NavBarComponent {
-    
-    navBar:Navigation ;
-    brand:string;
+    navBar: INavBar ;
+    brand: string;
 
-    constructor( public navBarCtrl:NavBarProvider ) {
+    constructor( public navBarCtrl: NavBarProvider ) {
         this.brand = this.navBarCtrl.getTitle();
         this.navBar = this.navBarCtrl.getNavBar();
     }
 
-    ngOninit(){
-        
+    ngOninit() {
     }
 }

@@ -1,6 +1,19 @@
+/**
+* @author: Tony Taylor
+* @authorUrl: http://github.com/tonytyronetaylor
+* @authorEmail: tony.tyrone.taylor@gmail.com
+* @license: G.N.U General Public License V3
+* @licenseUrl: https://www.gnu.org/licenses/gpl-3.0.en.html
+**/
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-//describe('AppComponent', () => {
+
+describe( 'App Component' , () => {
+  it('Launches application', () => {
+    expect('<router-outlet></router-outlet>').toBe('<router-outlet></router-outlet>');
+  })
+});
+// describe('AppComponent', () => {
   /*beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -24,9 +37,4 @@ import { AppComponent } from './app.component';
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
   }));*/
-//});
-describe( 'App Component' , () => {
-  it('Launches application', () => {
-    expect('<router-outlet></router-outlet>').toBe('<router-outlet></router-outlet>');
-  })
-});
+// });

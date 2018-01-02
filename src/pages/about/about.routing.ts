@@ -5,9 +5,9 @@ import { AboutPage } from './about';
 
 const routes: Routes = [
   {
-    path:'about',
+    path: 'about',
     component: AboutPage
-    //loadChildren:'src/app/pages/about/about#AboutPage'
+    // loadChildren:'C:/workspace/www/dev/technimove/src/pages/about/about#AboutPage'
   }
 ];
 

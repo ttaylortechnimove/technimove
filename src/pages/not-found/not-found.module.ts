@@ -6,8 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { NotFoundRoutingModule } from './not-found.routing';
 
 @NgModule({
-  declarations: [ 
-    // NotFoundPage 
+  declarations: [
+    // NotFoundPage
   ],
   imports: [ NotFoundRoutingModule ],
   exports: [ ]

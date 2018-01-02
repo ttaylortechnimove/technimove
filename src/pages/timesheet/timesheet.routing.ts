@@ -6,15 +6,15 @@ import { TimesheetPage } from './timesheet';
 
 const routes: Routes = [
     {
-        path:'timesheet',
-        //component: TimesheetRouterComponent
+        path: 'timesheet',
+        // component: TimesheetRouterComponent
         component: TimesheetPage
-        //loadChildren:'./src/app/pages/timesheet/timesheet.module#Timesheet'
+        // loadChildren:'C:/workspace/www/dev/technimove/src/pages/timesheet/timesheet.module#Timesheet'
       }
 ]
 
 @NgModule({
-    imports: [ 
+    imports: [
         RouterModule.forChild(
             routes/*,  { preloadingStrategy: PreloadAllModules }*/
         )

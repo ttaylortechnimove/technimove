@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { CreateAccount } from '../../models/create-account/create-account.model';
+import { IRegisterUser } from '../../models/register-user/register-user.model';
 import { AuthProvider } from '../../providers/auth/auth.provider';
 /*
 * comments
@@ -18,21 +18,20 @@ import { AuthProvider } from '../../providers/auth/auth.provider';
 
 export class RegisterComponent implements OnInit {
 
-    viewTitle:string = "Register";
+    viewTitle: string = 'Register';
     form: FormGroup;
-    cA: CreateAccount;
+    registerUser: IRegisterUser;
     model = {
-        firstName:'',
-        lastName:'',
-        companyName:'',
-        email:'',
-        password:''
-    }
-    constructor( private fb: FormBuilder, public authService: AuthProvider ){
-       
+        firstName: '',
+        lastName: '',
+        companyName: '',
+        email: '',
+        password: ''
+    };
+    constructor( private fb: FormBuilder, public authService: AuthProvider ) {
     } // End of constructor
 
-    ngOnInit(){
+    ngOnInit() {
         /*this.form.get('validate').valueChanges.subscribe(
 
         )*/
@@ -57,19 +56,19 @@ export class RegisterComponent implements OnInit {
                 updateOn: 'change'
             }),
             password: new FormControl('', {
-                validators: Validators.compose( 
-                    [ 
-                        Validators.required, 
-                        Validators.minLength( 6 ), 
-                        Validators.maxLength( 20 ) 
-                    ] 
+                validators: Validators.compose(
+                    [
+                        Validators.required,
+                        Validators.minLength( 6 ),
+                        Validators.maxLength( 20 )
+                    ]
                 ),
                 updateOn: 'change'
             }),
-        })
+        });
     } // End of ngOnInit
 
-    onSubmit( business ){
+    onSubmit( business ) {
         this.authService.register( business );
     } /// End of submit
 

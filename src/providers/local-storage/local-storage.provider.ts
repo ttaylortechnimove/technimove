@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 
-import { Storage } from "../../models/storage/storage";
+import { IStorage } from '../../models/storage/storage';
 
+@Injectable()
 export class LocalStorage {
     storage = {
-     ready: () => { 
+     ready: () => {
 
      },
-     set: ( key:string, value:string ) => {
-
+     set: ( key: string, value: string ) => {
+        window.localStorage.setItem( key, value );
       },
-     get: ( key:string ) => {
-
-      }   
+     get: ( key: string ) => {
+        window.localStorage.getItem( key );
+      }
     };
 
     constructor() {
@@ -30,7 +31,7 @@ export class LocalStorage {
           });
           // TODO: Handle storage not being available
       }
-    
+
     public getValue( key: string ): Promise<string> {
         return this.storage.ready()
           .then( () => {

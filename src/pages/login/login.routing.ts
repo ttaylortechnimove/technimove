@@ -8,7 +8,7 @@ const routes: Routes = [
         path: 'login',
         component: LoginPage
     }*/
-]
+];
 
 @NgModule({
     declarations: [
@@ -17,7 +17,7 @@ const routes: Routes = [
     imports: [
         RouterModule.forChild( routes )
     ],
-    exports: [ 
+    exports: [
         RouterModule
      ]
 })

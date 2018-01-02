@@ -13,12 +13,12 @@ import { AuthProvider } from '../../providers/auth/auth.provider';
 })
 
 export class LoginComponent implements OnInit {
-    viewTitle:string = "Login";
+    viewTitle: string = 'Login';
     options: FormGroup;
     model = {
-        email: "",
-        password: ""
-    }
+        email: '',
+        password: ''
+    };
     form: FormGroup;
 
     constructor( public fb: FormBuilder, private auth: AuthProvider ){
@@ -47,10 +47,10 @@ export class LoginComponent implements OnInit {
                 ),
                 updateOn: 'blur'
             })
-        })
+        });
     }
 
-    onSubmit( form ){
-        this.auth.login( form )
+    onSubmit( form ) {
+        this.auth.login( form );
     }
 }
