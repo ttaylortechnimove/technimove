@@ -1,5 +1,6 @@
-const UserAccount = require('mongoose').model('UserAccount');
+const User = require('mongoose').model('User');
 const passport = require('passport');
+const crypto = require('crypto');
 
 const getErrorMessage = ( err ) => {
     let message = '';
@@ -25,12 +26,18 @@ exports.angularRouter = ( req, res, next ) => {
     // next();
 };
 exports.create = ( req, res, next ) => {
-    let user = new UserAccount( req.body );      
+    let password = req.body.password;
+    const salt = new Buffer(crypto.randomBytes( 16 ).toString('base64'), 'base64');
+    
+    // console.log(crypto.pbkdf2Sync( password, salt, 10000, 64 ).toString( 'base64' ));
+
+    let user = new User( req.body );
+    user.provider = 'local';
     user.save( ( err ) => {
         if( err ){
-            return next(err);
+            return next( err );
         }else{
-            res.json(user);
+            res.json( user );
         }
     });  
 };
@@ -45,6 +52,6 @@ exports.logout = ( req, res ) => {
     res.redirect('/');
 };
 exports.findAccounts = ( req, res, next ) => {
-    let accounts = new UserAccount( req.body );
+    let accounts = new User( req.body );
     console.log(accounts.find())
 };

@@ -20,14 +20,14 @@ import { NotificationComponent } from '../components/notification/notification.c
     imports: [
         ForgotPasswordModule,
         RegisterModule,
-        DashboardModule,
+        // DashboardModule,
         HomeModule,
         TimesheetModule,
     ],
     exports: [
         ForgotPasswordModule,
         RegisterModule,
-        // DashboardModule,
+        DashboardModule,
         HomeModule,
         TimesheetModule,
         NotificationComponent

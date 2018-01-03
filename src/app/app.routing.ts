@@ -1,10 +1,3 @@
-/**
-* @author: Tony Taylor
-* @authorUrl: http://github.com/tonytyronetaylor
-* @authorEmail: tony.tyrone.taylor@gmail.com
-* @license: G.N.U General Public License V3
-* @licenseUrl: https://www.gnu.org/licenses/gpl-3.0.en.html
-**/
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
@@ -29,12 +22,10 @@ const routes: Routes = [
     },
     {
       path: 'login',
-      // loadChildren:'C:/workspace/www/dev/technimove/src/pages/home/home#HomePage'
       component: LoginPage
     },
     {
       path: '**',
-      // loadChildren:'C:/workspace/www/dev/technimove/src/pages/not-found/not-found#NotFoundPage'
       component: NotFoundPage
     }
 ];

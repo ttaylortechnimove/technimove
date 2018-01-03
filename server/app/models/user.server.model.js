@@ -1,8 +1,9 @@
 const mongoose = require( 'mongoose' );
 const crypto = require('crypto');
+
 const Schema = mongoose.Schema;
 
-const UserAccountSchema = new Schema({
+const UserSchema = new Schema({
     firstName: { 
         type:String,
         trim :true,
@@ -26,13 +27,13 @@ const UserAccountSchema = new Schema({
     },
     password: {
         type:String,
-        trim: true,
         validate: [
             ( password ) => {
                 return password && password.length >= 6;
             },
             'Password should be longer'
-        ]
+        ],
+        required: true
     },
     salt: {
         type: String
@@ -53,42 +54,70 @@ const UserAccountSchema = new Schema({
     }
 
 });
+
 // UserAccountSchema.statics.findByName( ( name, callback ) => {} )
 
-UserAccountSchema.virtual('fullName')
+UserSchema.pre('save', ( next ) => {
+    
+    if ( this.password ) {
+        this.salt = new Buffer( crypto.randomBytes( 16 ).toString( 'base64' ), 'base64' );
+        this.password = this.hashPassword( this.password );
+        console.log('Password: '+this.password );
+    }
+    next(); 
+});
+
+UserSchema.virtual('fullName')
     .get( () => {
             return this.firstName + ' ' + this.lastName; 
         }
     )
     .set( ( fullName ) => {
-        let splitName = fullName.split(' ');  
+        var splitName = fullName.split(' ');  
         this.firstName = splitName[0] || '';
         this.lastName = splitName[1] || '';
     }
 );
 
-UserAccountSchema.pre('save', ( next ) => {
-    if ( this.password ) {
-        this.salt = new Buffer( crypto.randomBytes( 16 ).toString( 'base64' ), 'base64' );
-        this.password = this.hashPassword( this.password );
-    }
-    next(); 
-});
-UserAccountSchema.methods.hashPassword = ( password ) => {
+UserSchema.methods.hashPassword = ( password ) => {
     return crypto.pbkdf2Sync( password, this.salt, 10000, 64 ).toString( 'base64' );
 };
-UserAccountSchema.methods.authenticate = ( password ) => {
+UserSchema.methods.authenticate = ( password ) => {
     return this.password ===  this.hashPassword( password );
 }
 
-UserAccountSchema.set( 'toJSON', {  getters: true,  virtuals: true });
+UserSchema.statics.findUniqueUsername = ( username, suffix, callback ) => {
+    var _this = this;
+    var possibleUsername = username + (suffix || '');
 
-UserAccountSchema.post( 'save', ( next ) => {
-    if( this.isNew){
+    _this.findOne({
+        username: possibleUsername
+    }, ( err, user) => {
+        if( !err ) {
+            if( !user ) {
+                callback(possibleUsername);
+            } else {
+                return _this.findUniqueUsername( username, ( suffix || 0 ) + 1, callback );
+            }
+        } else {
+            callback( null );
+        }
+    })
+} ;
+
+UserSchema.set( 'toJSON',
+    {
+        getters: true,
+        virtuals: true 
+    }
+);
+
+UserSchema.post( 'save', ( next ) => {
+    if( this.isNew ) {
         console.log("A new user was created.");
     }else{
         console.log("A user updated details.");
     }
 } )
 
-mongoose.model( 'UserAccount', UserAccountSchema );
+mongoose.model( 'User', UserSchema );

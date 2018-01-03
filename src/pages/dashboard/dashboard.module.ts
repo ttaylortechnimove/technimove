@@ -17,10 +17,11 @@ import { DashboardContentComponent } from '../../components/dashboard-content/da
     ],
     imports: [
         CommonModule,
-        DashboardRoutingModule,
         AppMaterialModule,
+        DashboardRoutingModule
     ],
     exports: [
+        DashboardPage,
         DashboardSidenavComponent,
         DashboardMenuComponent,
         DashboardContentComponent

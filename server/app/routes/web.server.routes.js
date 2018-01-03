@@ -5,9 +5,9 @@ module.exports = ( app ) => {
     // app.route('/').all( web.angularRouter );
     
     // app.route('*').get( web.angularRouter );
-    app.route('/create-account').post( web.create );
-    app.route('/auth').post( passport.authenticate('local', {
-        successRedirect: 'http://127.0.0.1:5000/dashboard',
+    app.route('/register').post( web.create );
+    app.route('/login').post( passport.authenticate('local', {
+        successRedirect: 'http://localhost:5000/dashboard',
         failureRedirect: '/',
         failureFlash: true
     }) );

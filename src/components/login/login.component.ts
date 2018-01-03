@@ -13,7 +13,7 @@ import { AuthProvider } from '../../providers/auth/auth.provider';
 })
 
 export class LoginComponent implements OnInit {
-    viewTitle: string = 'Login';
+    viewTitle: String = 'Login';
     options: FormGroup;
     model = {
         email: '',

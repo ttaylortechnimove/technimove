@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('mongoose').model('UserAccount');
+const User = require('mongoose').model('User');
 
 module.exports = () => {
     passport.use( new LocalStrategy( ( email, password, done ) => {
@@ -20,7 +20,7 @@ module.exports = () => {
                     message: 'Invalid password'
                 });
             }
-            return done( null, user )
+            return done( null, user );
         });
     }));
 };
